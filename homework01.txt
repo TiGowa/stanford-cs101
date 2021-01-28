@@ -1,0 +1,151 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2576
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 ----------\
+code-1-ex1\
+\
+print(1, 2, "tree");\
+\
+----------\
+code-1-ex2\
+\
+print(3, 4, "alive");\
+\
+----------\
+code-1-ex3\
+\
+print(7, "ate", 9);\
+\
+----------\
+code-1-ex4\
+\
+print(1, 2, 3);\
+print(" ",2 , 3);\
+print(" ", " ", 3);\
+\
+----------\
+code-1-ex5\
+\
+print("-");\
+print("-");\
+print("-", "-");\
+print("-", "-", "-");\
+print("-", "-", "-", "-");\
+print("-", "-", "-", "-", "-");\
+print("-", "-", "-", "-", "-");\
+print("-", "-", "-", "-", "-", "-", "-");\
+print("-", "-", "-", "-", "-", "-", "-");\
+print("-", "-", "-", "-", "-");\
+print("-", "-", "-", "-", "-");\
+print("-", "-", "-", "-");\
+print("-", "-", "-");\
+print("-", "-");\
+print("-");\
+print("-");\
+}
+
+//Didier's tower
+
+
+4.  What is the output of the following code?print("hello", 4);print("\\");print("print(1, 2, 3)");Be sure to include line breaks when appropriate.
+
+hello 4
+\\
+print(1, 2, 3)
+
+
+5.  Describe two ways you can quit a program.
+A- Quit the program via the quit feature of the program
+B- OS task manager > select and kill the program
+
+
+6.  How does an operating system make your computer more secure?  Describe two other-roles of an operating system.
+The operating system allocates the memory (RAM: Random Access Memory) to run multiple programs simultaneously - multitasking. 
+A- manage different tasks
+B- organise files via its file and directory management system
+C- run programs independently
+
+
+7.  Find some software that is open source that we did not discuss in class.  How has that software  had  an  impact?   For  example:  Java  was  open-sourced  by  Oracle,  and  now it’s one of the most popular programming languages.  Firefox is an open-sourced web browser that eventually led to the creation of Google Chrome.
+
+-Tor is an open-source software that allows privacy-oriented web browsing. Now known as one of the best browsers to navigate the web anonymously. 
+-Bitcoin is an open-source protocol that allows digital transfers of value / solves the double-spending problem. Bitcoin is now a $600 billion project.
+-Python is an open-source programming language that is high-level oriented and quite easy to use. The python ecosystem of libraries, frameworks and tools is significant and it is growing.
+
+
+8.  List one programming language that is an interpreted language and another that is a compiled language that we didn’t discuss in class.  What is the difference between interpreted and compiled languages?
+
+Python is an interpreted language. Python uses an intermediate representation. C is a compiled language. Pascal is a compiled language. Low-level programming languages are compiled before their execution into machine code.
+
+
+9.  Describe  two  reasons  for  open-sourcing  code  and  two  reasons  for  only  releasing  the.app/.exe files.  Describe a product you might open-source and one you might not.
+
+Open-sourcing a code can lead to:
+A- improvement of the code source via inputs / developments from the community 
+B- another application thanks to the modification of its source code
+
+Release the source code in .exe can lead to:
+A- protection of a competitive advantage
+B- revenue generation model based on the use of the software (subscription, on the fly, etc.).
+
+A password management application might have a great benefit in an open-source model (ex: KeeWeb). Security problems are better solved by a large group of contributors. A trading algorithm that gives you a potential edge on the financial market might be kept proprietary, as its use might give you a competitive advantage.
+   
+
+10.  Why would a company like Google contribute to open source code (that is not their-own, such as Linux)?
+
+Because Google's products are made of open-source components / programs too (ex: Chrome). Google benefits from open-source programs. By contributing to an open-source program Google improves its own product offering too. Win-win situation.
+
+
+HARDWARE
+
+11.  Open Task Manager or Activity Monitor and take a screenshot of the program.  Which program is using the most memory?  What kind of memory is being measured (harddrive or RAM)? Which is using the most CPU? Name a program listed that you weren’texpecting.
+
+/Users/dpironi/Desktop/Screenshot 2021-01-21 at 15.15.29.png
+
+Firefox is using the most memory. The memory used is RAM (Random Access Memory) and is measured in bytes. RAM uses CPU to run and execute lines of instructions. Firefox is using the most CPU. KeeWeb helper uses 0.2 of the CPU, quite unexpected.
+
+
+12.  Describe  three  resources  shared  between  programs  or  applications,  managed  by  the operating system.  How is each one managed?
+
+A- RAM
+B- CPU
+C- Persistent storage / Disk
+
+The OS runs the program and allocates its own area in RAM to hold code and data. Then it starts CPU that will run those instructions. Two different applications can save data on the disk of the computer, using both the file management system of the OS.
+
+
+13.  Would you prefer flash storage or disk storage in a new computer?  Give at least two specific reasons to support your choice.
+
+I would prefer flash storage for two reasons:
+A- faster / high-speed memory
+B- less ergonomic than a traditional disk
+C- no noise (spinning disk and north/south movements ie. video) : )
+  
+
+14.  Given your understanding of Moore’s Law, why does an iPhone today cost more than it did upon its release?
+
+Moore's law indicates that the number of transistors on a computer chip doubles every two years (approximately). The cost of such an improvement ($1b to start a chip industry!) will reflect the cost of the last iPhone. It is likely, following Moore's law, that the new iPhone will be less powerful than the next one in two years, costing less than the one as a result.
+
+
+15.  Describe  how  CPU,  RAM,  and  hard  drive  storage  were  used  as  you  completed  this homework assignment.  Which other layer(s) of abstraction did you directly interact with?
+
+For instance, when I pressed the button "run" to execute a line of codes in Firefox, the CPU was used to run the lines of instructions used by the Firefox application. My OS allocates some RAM to run the Firefox application. To save my work, I created a .txt file to store permanently the exercises. This file is saved on my disk and I can access the information stored in the file even after the computer is turned off. The function print in Javascript that I used was a level of abstraction used to print an output. "Print" does not exist in machine code. The code was compiled and translated into machine code directly within the Firefox browser.
+
+
+16.  What inputs for A and B make the output of the following circuit true, or 1?  What inputs make it false?
+
+Circuit true or 1 with two inputs for A and B:
+1- A = 1, B = 0
+2- A = 0, B = 0
+
+Circuit false or 0 for A and B:
+1- A = 1, B = 1
+2- A = 0, B = 1
+
+
