@@ -1,0 +1,348 @@
+Loop Exercises
+
+1.  Describe the order that a for loop goes over pixels in an image.  Which pixel is chosen first?  Are they looked at row-by-row, column-by-column, or some other scheme? Hint: you can use the debugger or print the pixels out in the for loop.
+
+I was surprised! 
+
+The first chosen pixel is (0, 0), at the top left.
+
+Then it (loop) goes top-down or column-by-column.
+
+(0, 0)
+(0, 1)
+(0, ...)
+(1, 0)
+(1, 1)
+(1, ...)
+(2, 0)
+Etc.
+
+
+2.  The  first  code  exercise  involves  removing  the  red  from  the  image. What color are the flowers now, and why are they that color?  Use your knowledge of colors (or the red/green/blue explorer) from last week to answer this question.
+
+The flowers become green when removing red from the image. Yellow is RGB: 255, 255, 0. So when removing the red via pixel.setRed(0), we have the following RGB for the flowers (approx): 0, 255, 0. And this is Green!
+
+
+3.  If there are 6 pixels in the image ”6pixels.jpg”, write the lines of code in the order that they are executed.  If a line is executed more than once,  then it should be included more than once. What is the value of x at the end of this code?
+
+To have the size of the image.
+
+img = new SimpleImage("6pixels.jpg");
+img.getWidth();
+img.getHeight();
+
+The value of x is 11 at the end of this code.
+
+img = new SimpleImage("6pixels.jpg");
+x = 2;
+x = x + 3;
+for (pixel : img) {
+	x = x + 5;
+	}
+x = x + 1;
+
+----------
+for-loop-ex1
+
+image = new SimpleImage("flowers.jpg");
+print("before");
+print(image);
+for (pixel: image) {
+      pixel.setRed(0);
+}
+
+print("after");
+print(image);
+
+----------
+for-loop-ex2
+
+image = new SimpleImage("51020-poppy.png");
+
+for (pixel: image) {
+  pixel.setRed(pixel.getRed() * 10);
+  pixel.setGreen(pixel.getGreen() * 5);
+  pixel.setBlue(pixel.getBlue() * 20);
+
+}
+
+print(image);
+
+----------
+for-loop-ex3
+
+image = new SimpleImage("51020-oranges.png");
+
+for (pixel: image) {
+  pixel.setRed(pixel.getRed() * 20);
+  pixel.setGreen(pixel.getGreen() * 5);
+  pixel.setBlue(pixel.getBlue() * 10);
+}
+
+print(image);
+
+----------
+for-loop-ex4
+
+image = new SimpleImage("puzzle-copper.png");
+
+for (pixel: image) {
+     pixel.setRGB(0, pixel.getGreen()*10, pixel.getBlue()*10);
+
+}
+
+print(image);
+
+----------
+for-loop-ex5
+
+image = new SimpleImage("puzzle-sunny.png");
+
+for (pixel: image) {
+     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+     pixel.setRed(255);
+     pixel.setGreen(pixel.getGreen()*5);
+     pixel.setBlue(255);
+     
+     
+
+}
+
+print(image);
+
+----------
+for-loop-ex6
+
+image = new SimpleImage("banana.jpg");
+
+for (pixel: image) {
+     pixel.setRGB(255 - pixel.getRed(), 255 - pixel.getGreen(), 255 - pixel.getBlue())
+
+}
+
+print(image);
+
+----------
+for-loop-ex7
+
+image = new SimpleImage("poppy.jpg");
+
+for (pixel: image) {
+     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+     for (neighbors: image.getNeighbors(pixel)) {
+          pixel.setRed(avg);
+          pixel.setGreen(avg);
+          pixel.setBlue(0);
+     }
+}
+
+print(image);
+
+----------
+for-loop-ex8
+
+// don't manage to get the purple square without an If statement :,(
+
+//Ex below complicated way
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+i = 0;
+
+for (pixel: image) {
+    if (i == 99) {
+         pixel.setRGB(123, 0, 201);
+         } else {
+              i += 1;
+              }
+} 
+
+print(image);
+
+
+If Statements
+
+4.  Consider the following code:
+
+for (pixel : img) {
+	if (pixel.getRed() > 200) {
+		if (pixel.getGreen() < 50) {
+			if (pixel.getBlue() > 200) {
+				print(pixel);
+			}
+		}
+	}
+}
+
+What are the colors of the pixels that are printed?  Please list the color (e.g.  brown) instead of the actual red, green, and blue values.
+
+The possible colours could be from purple to pink, depending on the variations of Red, Green and Blue. The more Red tends to 255 the more pinker is the colour. 
+
+
+5.  Rewrite the following code snippets without and or or. Hint: you might need to use multiple conditionals. Try running your code to see what it does.
+
+(a)
+
+img = new SimpleImage("x.png");
+img.setZoom(20);
+for (pixel : img) {
+	if (pixel.getX() == 0 || pixel.getY() == 5) {
+		pixel.setRGB(255, 125, 0);
+	}
+}
+print(img);
+
+Solution 1:
+
+img = new SimpleImage("x.png");
+img.setZoom(20);
+for (pixel : img) {
+	if (pixel.getX() == 0) {
+		pixel.setRGB(255, 125, 0);
+	}
+}
+
+firstLine = img;
+
+for (pixel : firstLine) {
+	if (pixel.getY() == 5) {
+		pixel.setRGB(255, 125, 0);
+	}
+}
+
+secondLine = firstLine;
+print(secondLine)
+
+Solution 2:
+
+img = new SimpleImage("x.png");
+img.setZoom(20);
+for (pixel : img) {
+	if (pixel.getX() == 0) {
+		pixel.setRGB(255, 125, 0);
+        }
+        if (pixel.getY() == 5) {
+                pixel.setRGB(255, 125, 0);
+        }
+	
+}
+
+print(img);
+
+
+(b)
+
+img = new SimpleImage("x.png");
+img.setZoom(20);
+for (pixel : img) {
+	if (pixel.getX() >= 5 && pixel.getY() <= 7) {
+		pixel.setRGB(0, 255, 255);
+	}
+}
+print(img);
+
+
+Solution:
+
+img = new SimpleImage("x.png");
+img.setZoom(20);
+for (pixel : img) {
+	if (pixel.getX() >= 5) {
+	        if (pixel.getY() <= 7) {
+                      pixel.setRGB(0, 255, 255);
+                }
+        }
+}
+print(img);
+
+
+6.  Describe  the  edge  detection  algorithm.   How  does  it  work,  and  what  effect  does  it achieve?
+
+The edge detection algorithm detects the difference of a pixel from its neigbors.
+
+If pixel.isDifferentFrom(neighbor, Factor/Number) then apply whatever you want on the pixel. The algo to highlight strong forms or shapes within an image. When there is a strong change of colour, a distinct form appears in the image. The algo can emphasise those forms!
+
+----------
+if-ex1
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+for (pixel : image) {
+    if (pixel.getX() == pixel.getY()) {
+         pixel.setRGB(123, 0, 201);
+    }
+}
+
+print(image);
+
+----------
+if-ex2
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+for (pixel : image) {
+    if (pixel.getX() == pixel.getY() || pixel.getX() + pixel.getY() == image.getWidth() - 1 ) {
+         pixel.setRGB(123, 0, 201); 
+         } else { 
+           pixel.setRGB(0, 255, 255);
+           }
+}
+
+print(image);
+
+----------
+if-ex3
+
+image = new SimpleImage("flowers.jpg");
+
+for (pixel : image) {
+      avg = ((pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3);
+      if (pixel.getX() < (image.getWidth() / 2) && pixel.getY() < (image.getHeight() / 2)) {
+            pixel.setRGB(avg, avg, avg);
+      }
+}
+
+print(image);
+
+----------
+if-ex4
+
+image = new SimpleImage("flowers.jpg");
+
+for (pixel : image) {
+      avg = ((pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3);
+      if (avg < 125) {
+      pixel.setRGB(0, 0, 0);
+      } else {
+           pixel.setRGB(255, 255, 255);
+           }
+}
+
+print(image);
+
+----------
+if-ex5
+
+//The flowers are on the Moon! :)
+
+image = new SimpleImage("flowers.jpg");
+back = new SimpleImage("moon.jpg");
+
+for (pixel: image) {
+     avg = ((pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3);
+     if (pixel.getRed() < avg * 1.2) {
+         x = pixel.getX();
+         y = pixel.getY();
+         pixel2 = back.getPixel(x, y);
+         pixel.setRed(pixel2.getRed());
+         pixel.setGreen(pixel2.getGreen());
+         pixel.setBlue(pixel2.getBlue());
+  }
+}
+
+print(image);
+
+
+

@@ -1,0 +1,106 @@
+----------
+image-10custom-ex1
+
+image = new SimpleImage("cookie-photo.jpg");
+back = new SimpleImage("yosemite.jpg");
+back.setSameSize(image);
+
+for (pixel: image) {
+     
+     backPixel = back.getPixel(pixel.getX(), pixel.getY());
+                    
+          if (pixel.isSimilarTo(255, 255, 255, 110)) {             
+                   
+               pixel.setRGB(
+               backPixel.getRed(),
+               backPixel.getGreen(),
+               backPixel.getBlue())          
+               }
+}
+
+print(image);
+
+----------
+image-10custom-ex2
+
+image = new SimpleImage("ti-photo.jpg");
+back = new SimpleImage("moon.jpg");
+back.setSameSize(image);
+back2 = new SimpleImage("leaves.jpg");
+back2.setSameSize(image);
+
+x = image.getWidth() / 2; //looking for sweater color
+y = image.getHeight() / 2; //looking for sweater color
+
+sweater = (image.getRed(x, y) + image.getGreen(x, y) + image.getBlue(x, y)) / 3;  
+
+for (pixel: image) {
+  
+     backPixel = back.getPixel(pixel.getX(), pixel.getY());
+     back2Pixel = back2.getPixel(pixel.getX(), pixel.getY());
+     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+          
+          if (pixel.isSimilarTo(255, 255, 255, 150)) {             
+               pixel.setRGB(
+               backPixel.getRed(),
+               backPixel.getGreen(),
+               backPixel.getBlue())
+               }
+          if (pixel.getY() >= y) { 
+          
+              if (avg < sweater *1.35 &&
+                  avg > sweater *0.65) {
+                  pixel.setRGB(
+                  back2Pixel.getRed(),
+                  back2Pixel.getGreen(),
+                  back2Pixel.getBlue())
+                  }
+              }
+}
+
+print(image);
+
+----------
+image-10custom-ex3
+
+image = new SimpleImage("cookie-photo.jpg");
+back = new SimpleImage("ti-photo.jpg");
+back.setSameSize(image);
+
+//Blur effect
+
+x = image.getWidth() / 3; //looking for skin color
+y = image.getHeight() / 3; //looking for skin color
+halve = image.getHeight() / 2
+print(image.getPixel(x, y));
+
+for (pixel: image) {
+     sumRed = 0;
+     sumGreen = 0;
+     sumBlue = 0;
+     denominator = (image.countNeighbors(pixel) - 1);
+     backPixel = back.getPixel(pixel.getX(), pixel.getY());
+     avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+     
+     for (neighbor: image.getNeighbors(pixel)) {
+           sumRed += neighbor.getRed();
+           sumGreen += neighbor.getGreen();
+           sumBlue += neighbor.getBlue();
+           
+           avgRed = (sumRed - pixel.getRed()) / denominator;
+           avgGreen = (sumGreen - pixel.getGreen()) / denominator;
+           avgBlue = (sumBlue - pixel.getBlue()) / denominator;          
+    
+           pixel.setRGB(avgRed, avgGreen, avgBlue);
+     }
+     
+     if (pixel.getRed() > avg * 1.05 &&
+         pixel.getY() < halve * 0.9) {
+           pixel.setRGB(
+           backPixel.getRed(),
+           backPixel.getGreen(),
+           backPixel.getBlue())
+           }
+}
+
+print(image);

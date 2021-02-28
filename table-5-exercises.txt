@@ -1,0 +1,61 @@
+----------
+table-5-ex1
+
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for (row: table) {
+     if (row.getField("name").startsWith("L")) {
+          count += 1;
+     }
+}
+print("count:", count);
+
+----------
+table-5-ex2
+
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for (row: table) {
+  if (!row.getField("name").startsWith("L")) {
+       count += 1;
+       }
+}
+print("count:", count);
+
+----------
+table-5-ex3
+
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for (row: table) {
+  if(row.getField("gender") == "girl" &&
+     row.getField("name").startsWith("T")) {
+     count += 1;
+     }
+}
+print("count:", count);
+
+----------
+table-5-ex4
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     if(row.getField("gender") == "boy" &&
+        row.getField("name").endsWith("d")) {
+        count += 1;
+        }
+}
+print("count:", count);
+
+----------
+table-5-ex5
+
+table = new SimpleTable("baby-2010.csv");
+count = 0;
+for (row: table) {
+     if(row.getField("name").endsWith("m") &&
+        row.getField("rank") <= 500) {
+        count += 1;
+        }
+}
+print("count:", count);

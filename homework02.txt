@@ -1,0 +1,431 @@
+Bytes Exercises
+
+1.  Why do you think computers store integers differently from how they store words? In other words, why don’t we store the number 31,245 as the characters “3”, “1”, “2”,“4”,  and  “5”  in  the  same  way  that  we  say  that  the  word  ”hello”  is  made  from  the letters “h”, “e”, “l”, “l”, and “o”?
+
+Basic operations (additions, multiplications, etc.) can be performed directly by using integers. If we have "1" and "2" stored as characters, the computer would not be able / understand the following basic operation: "1" + "2".
+
+As written in the lesson: "Computers are also good at manipulating numbers".
+
+
+2.  As  we  discussed  in  class, Gangam  Style  got  so  many  views  that  the  view  counter “overflowed”  down  to  a  negative  number. YouTube  reacted  by  changing  their  view counter to be stored in 8 bytes instead of 4 bytes.  Why would a company choose to use 4 bytes over 8 bytes to store integers?
+
+1 byte can hold a number between 0 and 255. 1 byte = 8 bits = 2^8 patterns = 256 patterns.
+
+Integers are commonly stored using 4 bytes or 4 x 8 = 32 bits. 2^32 = 4294967296 patterns. So the view counter of Google was able, before the modification, to store any integer between -2147483648 and 2147483647.
+
+A company would prefer 4 bytes over 8 bytes to store integers as it is more memory-efficient. However, and as highlighted by the Gangam Style problem, that only works for integers below 2^32 patterns / possibilities. 
+
+
+3.  One bit can encode 2 patterns (0 or 1).  How many patterns can five bits encode?  How many patterns can 2 bytes encode? 
+
+5 bits can encode 2^5 patterns = 32 patterns. 
+
+2 bytes = 2 x 8 bits = 16 bits. 16 bits can encode 2^16 patterns = 65536 patterns.
+
+
+4.  Your friend is considering buying a new phone and wants to store 8 hours of music (in  the  form  of  MP3  audio), 3 2-hour  movies,  and  250  emails. Using the estimates provided in class, should your friend buy a phone with 8GB of storage or one with 16GB of storage? How much storage will your friend have left over after loading the songs, movies, and emails?
+
+Estimates given in class:
+1 min of audio | Raw CD Audio = 10MB of data storage
+1 min of audio | MP3 (lossy compression) = 1MB of data storage
+Note: a video equals a series of images plus audio. A video generally contains 20-60 images per second. 
+1 min of video | compressed video = 30MB of data storage 
+1 character = 1 byte
+
+8 hours of music are approx 8 x 60 = 480 minutes. 480 min x 1MB = 480MB
+
+3 2-hour movies are approx 3 x 120-min = 360 minutes. 360 min x 30MB = 10,800MB
+
+According to Google (https://blog.aweber.com/email-marketing/2019-email-marketing-statistics.htm) the average length of an email is 434 words. If we consider that one word is approx made of an average of 6 characters then:
+
+6 x 434 words = 2604 characters.
+
+Let's add 434 x 2 = 868 white spaces = 868 characters 
+
+We have a total of 2604 + 868 = 3472 characters
+
+1 character being equals to 1 byte, we have approx 3472 bytes per email.
+
+So 250 emails x 3472 bytes = 868000 bytes = 868MB
+
+Now converting all to GB, we have: 
+-Music: 0.480GB 
+-Video: 10.08GB
+-Email: 0.868GB
+-Total = 11.428GB
+
+So my friend should buy the 16GB of storage phone, according to his/her needs. He/She will have 4.572GB left.
+
+
+5.  Each Tweet on Twitter can have at most 280 characters,  a username of at most 24 characters, and three integers (for number of likes, retweets, and comments).  Assuming each integer is 8 bytes and using the conversion of 1000 instead of 1024,  how many tweets can we store on a 1000MB hard drive?
+
+280 bytes (body) + 24 bytes (username) + 8-byte x 3 (engagement) = 328 bytes
+ 
+Each Tweet equals to approx 328 bytes. 
+
+1000MB = 1GB = 1000000 bytes
+
+So 1,000,000 / 328 = 3048 tweets 
+
+Approx 3048 tweets can be stored in a 1000MB hard drive.
+
+
+6.  Why might a computer be slightly wrong when subtracting two decimal numbers?
+
+Because computer organises and stores things in groups of powers of 2!
+
+https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+
+"In contrast, given any fixed number of bits, most calculations with real numbers will produce quantities that cannot be exactly represented using that many bits. Therefore the result of a floating-point calculation must often be rounded in order to fit back into its finite representation. This rounding error is the characteristic feature of floating-point computation. The section Relative Error and Ulps describes how it is measured."
+
+
+7.  Binary arithmetic:  What is the result of the following arithmetic problems, assuming the result is stored in six bits? Please give the binary (not decimal) result.
+
+(a)  010010 + 001010
+
+011100 (ok - verified)
+
+(b)  010110 + 101011
+
+1000001 (ok - verified)
+
+(c)  110010 + 110110
+
+1101000 (ok - verified)
+
+(d)  Bonus:  110110 - 011100
+
+011010 (ok - verified)
+
+
+Compression Exercises
+
+8.  What  is  a  downside  of  using  lossy  compression  (when  compared  to  a  lossless  compression scheme)?  Why would a computer scientist choose to use a lossy compression scheme over a lossless compression scheme?
+
+Using lossy compression will modify the "quality" of the original data (ie music or video). Lossless compression keeps all the original details. 
+
+The advantage of a lossy compression is that it uses less storage space. It uses fewer bytes. Compression adjusts how data is stored. So a lossy compression scheme can be useful for a data scientist to optimise storage space and memory consumption.
+
+
+9.  What is a downside of using lossless compression (when compared to not using any compression scheme)? Why would a computer scientist choose to compress their data?
+
+Lossless compression requires more data space / storage. Ex 1min audio equals approx 10MB of data storage against 1MB if MP3 lossy compression is used. A data scientist would rather choose to compress the data in order to optimise data storage and memory consumption. 
+
+
+10.  In class, we talked about several compression schemes (such as Huffman for compressing text or MP3 for compressing music). Find another compression scheme, and describe what kind of data it compresses.  Is it a lossless or a lossy compression scheme?
+
+I was going to take the ZIP archive file format but I have just read that it supports a lossless data compression scheme (https://en.wikipedia.org/wiki/ZIP_(file_format).
+
+Navigating Wikipedia, I have just found the glTF (derivative short form of Graphics Language Transmission Format or GL Transmission Format). Its creators described it as the JPEG of 3D!
+
+"A glTF file uses one of two possible file extensions, .gltf (JSON/ASCII) or .glb (binary)."
+
+It is an open-source lossy compression scheme.
+
+
+Variable Exercises
+
+----------
+code-2-ex1
+
+x = "xyz123";
+print(x);
+print(x, x);
+print(x, x, x);
+
+----------
+code-2-ex2
+
+x = "GO";
+y = "Stanford!";
+print(x);
+print(x, y);
+print(x, y, "@");
+print(x, y);
+print(x);
+
+----------
+code-2-ex3
+
+myName = "Didier";
+
+print("Hello, my name is", myName);
+print(myName, "is in this class");
+print("Without a doubt", myName, "is working on this homework");
+
+
+11.  What is the output of the following code? Be sure to include line breaks when appropriate.
+
+x = 4
+y = "cs101"
+print(x, y);
+y = "9"print(x, y); // logic error when run unexpected token: identifier 
+print("x, y");
+
+Output:
+
+4 cs101
+x, y
+
+
+12.  For this question, assume integers are stored using 4 bytes. How much memory is used to store y when y = “cs101”? When y = “9”?  How much memory is used to store x at the point that x = 4?
+
+Y = "cs101"
+5 characters = 5 bytes (memory used)
+
+Y = "9"
+9 is here expressed as a character = 1 byte (memory used)
+
+X = 4
+4 is here stored as an integer, using 4 bytes (memory used)
+
+
+13.  Describe one situation where you should use a variable.
+
+"Variables is like a box that holds a value".
+
+If we intend to call a value multiple times, a variable should be used.
+
+For instance, I would like to print: hello hello hello hello hello
+
+Instead of writing print(hello, hello, hello, hello, hello, hello); I can write:
+X = "hello"
+print(x, x, x, x, x);
+
+
+Digital Images
+
+Image exercises
+
+----------
+image-2-ex1
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(3, 2);
+pixel.setGreen(255);
+print(image);
+
+----------
+image-2-ex2
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(1, 4);
+// select a dark purple :)
+pixel.setRed(128);
+pixel.setGreen(0);
+pixel.setBlue(128);
+print(image);
+
+----------
+image-2-ex3
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(1, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(255);
+print(image);
+
+----------
+image-2-ex4
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(0);
+
+pixel = image.getPixel(1, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(0);
+
+print(image);
+
+----------
+image-2-ex5
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(0, 0);
+pixel.setRed(255);
+
+pixel = image.getPixel(1, 0);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(255);
+
+pixel = image.getPixel(2, 0);
+pixel.setRed(0);
+pixel.setGreen(0);
+pixel.setBlue(255);
+
+print(image);
+
+----------
+image-2-ex6
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(9, 9);
+pixel.setBlue(255);
+
+pixel = image.getPixel(8, 8);
+pixel.setBlue(255);
+
+pixel = image.getPixel(7, 7);
+pixel.setRed(0);
+pixel.setGreen(0);
+pixel.setBlue(255);
+
+print(image);
+
+----------
+image-2-ex7
+
+image = new SimpleImage("x.png");
+image.setZoom(20);
+
+pixel = image.getPixel(2, 2);
+pixel.setRed(255);
+pixel.setGreen(0);
+pixel.setBlue(24);
+pixel = image.getPixel(3, 3);
+pixel.setRed(255);
+pixel.setGreen(165);
+pixel.setBlue(44);
+pixel = image.getPixel(4, 4);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(65);
+pixel = image.getPixel(5, 5);
+pixel.setRed(0);
+pixel.setGreen(128);
+pixel.setBlue(24);
+pixel = image.getPixel(6, 6);
+pixel.setRed(0);
+pixel.setGreen(0);
+pixel.setBlue(249);
+pixel = image.getPixel(7, 7);
+pixel.setRed(134);
+pixel.setGreen(0);
+pixel.setBlue(125);
+
+pixel = image.getPixel(7, 2);
+pixel.setRed(255);
+pixel.setGreen(0);
+pixel.setBlue(24);
+pixel = image.getPixel(6, 3);
+pixel.setRed(255);
+pixel.setGreen(165);
+pixel.setBlue(44);
+pixel = image.getPixel(5, 4);
+pixel.setRed(255);
+pixel.setGreen(255);
+pixel.setBlue(65);
+pixel = image.getPixel(4, 5);
+pixel.setRed(0);
+pixel.setGreen(128);
+pixel.setBlue(24);
+pixel = image.getPixel(3, 6);
+pixel.setRed(0);
+pixel.setGreen(0);
+pixel.setBlue(249);
+pixel = image.getPixel(2, 7);
+pixel.setRed(134);
+pixel.setGreen(0);
+pixel.setBlue(125);
+
+
+print(image);
+
+
+14. Why are digital images comprised of pixels? Hint: think about how a digital camera works.
+
+Computers use binary numbers (0s and 1s). Each pixel represents 3 colours, Red Green Blue (RGB). Any colour can be represented / encoded by one number between 0 to 255. One colour equals 1 byte. Each light is encoded as a colour. Note: that is very different from mixing pigment colours. Pigment and light colours work completely differently.
+ 
+
+15. Describe the camera specifications on your phone. What type of phone do you have? How does this compare to your first phone’s specifications (use the internet to find the camera of your first phone, and please tell us what kind of phone it was)?
+
+Google
+
+Current iPhone:
+
+Camera. The iPhone 8 features a 12 MP camera with autofocus, f/1.8 aperture and optical image stabilization capable of capturing 4K video at 24, 30, or 60 frames per second, or 1080p video at 30, 60, 120 or 240 frames per second.
+
+First iPhone:
+
+90mm (3.5") screen (diagonally) 320×480 pixel resolution at 163 ppi 2:3 aspect ratio 18-bit (262,144-color) LCD
+
+
+16.  Play around with the RGB explorer: what is the secret to making shades of grey?
+
+Shades of grey
+
+Red: 220
+Green: 220
+Blue: 220
+
+
+17.  Describe how to make the colors light blue and brown.
+
+Brown "Peru"
+Red: 205
+Green: 133
+Blue 63
+
+Light blue (without Google!)
+Red: 165
+Green: 206
+Blue: 255
+
+
+18.  What happens if you call pixel.setRed() with a number greater than 255?  What if you call it with a number less than 0?
+
+Calling pixel.setRed() with a number greater than 255 will give the same output as 255 (very red / max brightness). Calling the number below 0, for example -500, will give the same output as 0 (max darkness).
+  
+
+19.  What happens if you call image.getPixel with a row or column that is larger than the number of rows in the image? What if you call it with a negative number?
+
+I have an error.
+
+Syntax Error: 
+x/y out of bounds x:12 y:0
+
+The same error message will appear when called with a negative number!
+
+Syntax Error:
+x/y out of bounds x:-12 y:0
+
+Note that the error gives a message that contains the max coordinate of x for both cases!
+
+
+20. What is the difference between LCD and OLED technology?  Briefly describe how each one works and an advantage of each one.
+
+LCD means Liquid Crystal Display and is made of 8 layers:
+-Light source
+--Polarizing filter
+---Electrodes
+----Liquid crystal
+-----Electrodes
+------Color filter
+-------Polarizing filter
+--------Display surface
+LCD allows the creation of individual picture element or pixel which could be used to form shapes. It uses light-modulating properties of liquid crystals! The technology is described as very power/energy-efficient, contrary to OLED technology.
+
+OLED means Organic Light Emitting Diodes. From my understanding, OLED are actual bulbs that turn on, so when they are off they are 100% pure black. OLED display is similar to LCD but works on a much smaller scale. https://www.reddit.com/r/explainlikeimfive/comments/5gig60/eli5_whats_an_oled_display_and_how_is_it/
+
+
+21.  What is the screen resolution of the computer you’re using to write this pset?  Give the dimensions in inches, the dimensions in pixels, and the resulting dots-per-inch.  You can  use  the  display  tab  in  ”About  this  Mac”  or  the  Resolution  in  Control  Panel  if you’re using Windows.
+
+Screen specifications are: Built-in Retina Display, 13.3-inch (2560 × 1600). The screen resolution is 2560 x 1600 pixels! That's actually better than HD, which is 1920 x 1080 pixels.

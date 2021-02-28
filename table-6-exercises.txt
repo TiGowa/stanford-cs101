@@ -1,0 +1,80 @@
+----------
+table-6-ex1
+
+table = new SimpleTable("baby-2010.csv");
+aName = 0;
+bName = 0;
+for (row: table) {
+     if (row.getField("name").startsWith("A")) {
+          aName += 1;
+          }
+     if (row.getField("name").startsWith("B")) {
+          bName += 1;
+          }
+}
+print("count aName:", aName);
+print("count bName:", bName);
+//Yes.
+
+----------
+table-6-ex2
+
+table = new SimpleTable("baby-2010.csv");
+aName = 0;
+bName = 0;
+for (row: table) {
+     if (row.getField("name").startsWith("A")) {
+          aName += 1;
+          }
+     if (row.getField("name").startsWith("B")) {
+          bName += 1;
+          }
+}
+if (aName > bName) {
+     print("More names start with A than with B");
+     } else { 
+          if (bName > aName) {
+               print("More names start with B than with A");
+               }
+          if (bName == aName) {
+               print("The same number of names start with A and B");
+               }
+            }
+
+----------
+table-6-ex3
+
+table = new SimpleTable("survey-2017.csv");
+table.convertToLowerCase();
+frCount = 0;
+gaCount = 0;
+for (row: table) {
+     if (row.getField("tv") == "friends") {
+          frCount += 1;
+          }
+     if (row.getField("tv") == "game of thrones") {
+          gaCount += 1;
+          }
+}
+print("fr count:", frCount);
+print("ga count:", gaCount);
+
+----------
+table-6-ex4
+
+table = new SimpleTable("survey-2017.csv");
+table.convertToLowerCase();
+frCount = 0;
+gaCount = 0;
+for (row: table) {
+  if (row.getField("color") == "green") {
+     if (row.getField("tv") == "friends") {
+          frCount += 1;
+          }
+     if (row.getField("tv") == "game of thrones") {
+          gaCount += 1;
+          }
+       }
+}
+print("fr count:", frCount);
+print("ga count:", gaCount);

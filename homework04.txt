@@ -1,0 +1,164 @@
+Image Filter Exercises
+
+Complete the exercises athttp://web.stanford.edu/class/cs101/image-10-exercises.html
+
+Cf. image-10-exercises.txt
+
+1.  Describe the green screen algorithm we used in class. How does it work? Describe in English what the code is doing. What is the purpose of the if statement?
+
+The green screen algorithm uses isSimilarTo() function. The function allows to identify a pixel that corresponds to certain defined criteria / arguments: Red, Green, Blue, Number.
+
+Number refers to the tolerance and is between 0 and 255. 
+
+The logic is to replace a pixel (ie green!) with another one! This logic works with the if(pixel.isSimilarTo(Red, Green, Blue, Number) {} condition.
+
+
+2.  How would you modify the faded images code to merge two images completely (i.e. without filtering based on color - we just want to merge two pictures)? What about to have a weighted average, favoring the original image twice as much as the back image? For this question, a written description is fine, though you may include code if you’d like.
+
+I have merged the stop and flowers images by using the Edge Detection algorithm. The success is quite nuanced :,(
+
+Below the code using isDifferentFrom(pixel, threshold) approach / technique.
+
+image = new SimpleImage("flowers.jpg");
+image2 = new SimpleImage("stop.jpg");
+image2.setAsBig(image);
+
+for (pixel: image) {
+     //avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+     pixel2 = image2.getPixel(pixel.getX(), pixel.getY());
+     
+     for (neighbor: image.getNeighbors(pixel)) {
+     
+         if (pixel.isDifferentFrom(pixel2, 150)) {
+              
+              pixel.setRGB(
+              pixel2.getRed(),
+              pixel2.getGreen(),
+              pixel2.getBlue())
+         }    
+     }
+}
+print(image);
+
+Wow! I did it :) Indeed, the weighted average works much better! Below the code.
+
+image = new SimpleImage("flowers.jpg");
+image2 = new SimpleImage("stop.jpg");
+image2.setAsBig(image);
+
+for (pixel: image) {
+     
+     pixel2 = image2.getPixel(pixel.getX(), pixel.getY());
+    
+     weightedAvg = 
+     (
+     (pixel.getRed()*2 + pixel2.getRed()) / 2
+     +(pixel.getGreen()*2 + pixel2.getGreen()) / 2
+     +(pixel.getBlue()*2 + pixel2.getBlue()) / 2
+     ) /3;
+     
+     pixel.setRGB(weightedAvg, weightedAvg, weightedAvg);
+
+}
+print(image);
+
+
+3.  Find another video of the green screen technique online (other than the videos shown in class). Include a link to the YouTube clip.
+
+https://www.youtube.com/watch?v=a2gxs3ktkAU
+
+
+Thursday’s Exercises
+
+Spreadsheet Exercises
+
+For the following exercises, you can find the datasets here: https://drive.google.com/drive/folders/1v4LenzHEnLXBNbCz-FGjLeFyAZuXjst_?usp=sharing.
+
+For each question, you should include both the formula (or formulas) you used, plus your final result. You should submit a copy of the chocolate dataset with the formulas for answering the questions below. Except for the last question, all the questions below pertain to the chocolate dataset.
+
+4.  How many distinct company locations are included?
+
+=UNIQUE(flavors_of_cacao!E1:E1796, FALSE, FALSE)
+
+Then
+
+=COUNTA(B2:B61)
+
+Note: no COUNTUNIQUE() function in Excel
+
+Result: 60
+
+
+5.  What is the average rating for chocolate bars sourced from Togo?
+
+=AVERAGEIFS(flavors_of_cacao!F2:F1796, flavors_of_cacao!H2:H1796, "Togo")
+
+Result: 3.083333333
+
+
+6.  In which year were the most number of bars reviewed?
+
+=MIN(flavors_of_cacao!C2:C1796)
+
+Then
+
+=MAX(flavors_of_cacao!C1761:C1796)
+
+Then dates from 2006 to 2017 to fill in cells
+
+Then in the next column 
+
+=COUNTIFS(flavors_of_cacao!$C$2:$C$1796, '6.'!A4)
+
+Result: 2015
+
+
+7.  Which company location has the highest average rating?
+
+=UNIQUE(flavors_of_cacao!A2:A1796, FALSE, FALSE)
+
+Then in the next column
+
+=AVERAGEIFS(flavors_of_cacao!$F$2:$F$1796,flavors_of_cacao!$A$2:$A$1796, '7.'!A1)
+
+Then 
+
+=MAX(B1:B416)
+
+Then in the next column 
+
+=IF(B1=4,"HERE", "")
+
+Result: Tobago Estate (Pralus)
+
+
+8.  How does chocolate percentage affect the rating?  Specifically,  what are the average ratings for chocolate of at least 75%, between 60 and 74.9%, and below 59.9%.
+
+Chocolate percentage does affect the rating. 
+
+>75%		2.962062257
+>60% and <74.9% 	3.245974235	
+<59.9%		2.943548387
+
+Best average rating can be find when the chocolate percentage is between 55% and 68%, approximately.
+
+The average rating starts to decrease as the chocolate percentage / concentration increases. A clear threshold of that observation can be identified at 70%. 
+
+=AVERAGEIFS(flavors_of_cacao!$F$2:$F$1796, flavors_of_cacao!$D$2:$D$1796, A1)
+
+=AVERAGEIFS(flavors_of_cacao!$F$2:$F$1796,flavors_of_cacao!$D$2:$D$1796, A2, flavors_of_cacao!$D$2:$D$1796, A3)
+
+=AVERAGEIFS(flavors_of_cacao!$F$2:$F$1796, flavors_of_cacao!$D$2:$D$1796, A4)
+
+
+9.  Find your own dataset (generally, a .csv file is best) and open it in Google Sheets or Excel. Describe three findings you made about your dataset, and include the formulas you used to calculate them. These findings should be non-trivial (i.e.  more than just that the dataset has this number of rows or an average value of that number). Please also include a link to your dataset. 
+
+Note: if you’re having trouble finding a dataset, you can try FiveThirtyEight (https://github.com/fivethirtyeight/data) or Kaggle (https://www.kaggle.com/datasets).
+
+I took the Marvel Comics Spreadsheet from CS101 google drive.
+
+1/ There is more than twice as many male characters as female characters!
+
+2/ There is one female character with no Eyes!!!
+
+3/ 6.7% of all comics characters made their first appearance during WW2 (1939-45).

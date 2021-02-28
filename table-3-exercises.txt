@@ -1,0 +1,43 @@
+----------
+table-3-ex1
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     if (row.getField("name").startsWith("X") ||
+         row.getField("name").startsWith("Y")) {
+         print(row);
+         }
+}
+
+----------
+table-3-ex2
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     if (row.getField("name").startsWith("B") &&
+         row.getField("name").endsWith("a")) {
+         print(row);
+         }
+}
+
+----------
+table-3-ex3
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     if (row.getField("gender") == "boy" &&
+         row.getField("name").endsWith("i")) {
+         print(row);
+         }
+}
+
+----------
+table-3-ex4
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     if (row.getField("rank") <= 10 &&
+         row.getField("gender") == "boy") {
+         print(row);
+         }
+}

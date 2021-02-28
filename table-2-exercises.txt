@@ -1,0 +1,26 @@
+----------
+table-2-ex1
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+  print(row.getField("name").startsWith("X"));
+  
+}
+
+----------
+table-2-ex2
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+     print(row.getField("name").startsWith("Xz"));
+  
+}
+
+----------
+table-2-ex3
+
+table = new SimpleTable("baby-2010.csv");
+for (row: table) {
+      print(row.getField("name").endsWith("x"));
+  
+}
